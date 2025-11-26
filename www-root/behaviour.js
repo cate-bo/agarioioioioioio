@@ -4,20 +4,23 @@ let player = {
     score: 0,
     name: ""
 };
-let startGame;
+let startGameBtn;
 let menuPlatform;
 let inputField;
+let playingField;
+let circle;
 document.addEventListener("DOMContentLoaded", function() {
     inputField = document.getElementById("nameInput");
     inputField.setAttribute("placeholder", "Add name here...");
-    startGame = document.getElementById("startGame");
-    startGame.addEventListener("click", function() {
-        playGame();
+
+    startGameBtn = document.getElementById("startGame");
+    startGameBtn.addEventListener("click", function() {
+        startGame();
     })
 
 });
 
-function playGame(){
+function startGame(){
     menuPlatform = document.getElementById("screen");
     menuPlatform.style.display = "none";
 }
