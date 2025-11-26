@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">test</button>
+<script>
+    let counter = 0;
+    document.addEventListener('DOMContentLoaded', () =>
+    {
+        const websocket = new WebSocket('http://localhost:8080');
+        websocket.addEventListener("open", () =>
+        {
+            console.log("connected");
+
+        });
+        websocket.addEventListener('message', function message(content) {
+            console.log(content.data);
+        })
+        document.getElementById('btn').addEventListener('click', (e)=>{
+            websocket.send(JSON.stringify(counter));
+            counter++;
+        })
+    })
+
+</script>
+</body>
+</html>
