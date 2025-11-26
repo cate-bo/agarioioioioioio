@@ -1,8 +1,6 @@
 let player = {
-    positionY: 0,
-    positionX: 0,
-    score: 0,
-    name: ""
+    mouseDirectionX: 0,
+    mouseDirectionY: 0
 };
 let startGameBtn;
 let menuPlatform;
@@ -16,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     startGameBtn = document.getElementById("startGame");
     startGameBtn.addEventListener("click", function() {
         startGame();
-    })
+    });
 
 });
 
