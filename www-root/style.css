@@ -21,6 +21,8 @@ body{
 }
 #playArea{
     z-index: -99;
+    display: block;
+    margin: 0;
 }
 .circle{
     position: fixed;
