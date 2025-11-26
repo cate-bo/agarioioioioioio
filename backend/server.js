@@ -1,20 +1,11 @@
-const io = require('socket.io');
+const express = require('express');
+const http_server = require('http').createServer(express);
+const {Server} = require('socket.io');
 
+const app = express();
+const io = new Server(http_server);
 
-//websocketserver
-const server = new WebSocketServer({port: 8080});
-
-wss.on('connection', function connection(ws){
-    console.log('connected');
-    ws.on('message', function message(data){
-        console.log(JSON.parse(data));
-        ws.send(JSON.stringify(data));
-    })
-})
-
-
-
-
+//express.static()
 
 
 
@@ -35,3 +26,4 @@ async function game_update()
     console.log('io');
 }
 
+http_server.listen(8080);
