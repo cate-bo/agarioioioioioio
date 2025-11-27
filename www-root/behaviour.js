@@ -13,7 +13,8 @@ let offsetX;
 let scale = 1;
 let screen;
 let playStart = false;
-let i = 0;
+let vecX, vecY;
+let calcVecX, calcVecY;
 document.addEventListener("DOMContentLoaded", function() {
     playingField = document.getElementById("playArea");
     playingField.width = 10000;
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     drawBoard();
     if(playStart){
-        document.addEventListener("wheel", (event) => {
+        /*document.addEventListener("wheel", (event) => {
             event.preventDefault();
             scale += event.deltaY * -0.0009;
             scale = Math.min(Math.max(0.85, scale), 1.6);
@@ -43,12 +44,20 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(window.scrollX);
             console.log(window.scrollY);
         }, {passive: false});
-        play();
+        play();*/
     }
-        document.addEventListener("mousemove", (event) => {
-            console.log(event.clientX);
-            console.log(event.clientY);
-        })
+    document.addEventListener("mousemove", (event) => {
+        vecX = event.clientX - 800;
+        vecY = event.clientY - 1000;
+
+        calcVecX = (vecX / ((Math.abs(vecX) + Math.abs(vecY))));
+        calcVecY = (vecY / ((Math.abs(vecX) + Math.abs(vecY))));
+
+        console.log("x:" + (calcVecX));
+        console.log("y:" + (calcVecY));
+        console.log(Math.abs(calcVecX) + Math.abs(calcVecY));
+
+    });
 });
 
 function startGame(){
@@ -56,24 +65,24 @@ function startGame(){
     menuPlatform.style.display = "none";
 
     //Koordinaten vom Server für den Spawn hier rein
-    window.scrollTo(800, 1000);
+    window.scrollTo(800 - window.innerWidth/2, 1000 - window.innerHeight/2);
     playStart = true;
     console.log(playStart);
 
-    document.addEventListener("wheel", (event) => {
+    /*document.addEventListener("wheel", (event) => {
         event.preventDefault();
         scale += event.deltaY * -0.0009;
         scale = Math.min(Math.max(0.85, scale), 1.6);
         screen.style.transform = `scale(${scale})`;
-        window.scrollTo(800, 1000);
+        window.scrollTo(800 - window.innerWidth/2, 1000 - window.innerHeight/2);
         console.log("scale", scale);
-    }, {passive: false});
+    }, {passive: false});*/
     play();
 }
 
 function play() {
     context.beginPath();
-    context.arc(800+window.innerWidth/2, 1000+window.innerHeight/2,80,0,2*Math.PI);
+    context.arc(800, 1000,80,0,2*Math.PI);
     context.fillStyle = "red";
     context.fill();
     context.closePath();
@@ -81,14 +90,14 @@ function play() {
 
 //Funktion für das Zeichnen des Grids auf dem Spielfeld
 function drawBoard(){
-    for (let x = 0; x <= playingField.width+offsetX; x += 40) {
+    for (let x = 0; x <= playingField.width; x += 40) {
         context.moveTo(0.5 + x + 10, 10);
-        context.lineTo(0.5 + x + 10, playingField.height+offsetY + 10);
+        context.lineTo(0.5 + x + 10, playingField.height + 10);
     }
 
-    for (let x = 0; x <= playingField.height+offsetY; x += 40) {
+    for (let x = 0; x <= playingField.height; x += 40) {
         context.moveTo(10, 0.5 + x + 10);
-        context.lineTo(playingField.width+offsetX + 10, 0.5 + x + 10);
+        context.lineTo(playingField.width + 10, 0.5 + x + 10);
     }
     context.strokeStyle = "gray";
     context.lineWidth = 0.3;
