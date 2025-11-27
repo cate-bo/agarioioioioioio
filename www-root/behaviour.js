@@ -21,20 +21,20 @@ document.addEventListener("DOMContentLoaded", function() {
     playingField.height = 10000;
     playingField.margin = "0";
     context = playingField.getContext("2d");
-    offsetY = (playingField.height/2);
-    offsetX = (playingField.width/2);
+    offsetY = (playingField.height / 2);
+    offsetX = (playingField.width / 2);
     screen = document.getElementById("whole");
 
     inputField = document.getElementById("nameInput");
     inputField.setAttribute("placeholder", "Add name here...");
 
     startGameBtn = document.getElementById("startGame");
-    startGameBtn.addEventListener("click", function() {
+    startGameBtn.addEventListener("click", function () {
         startGame();
     });
-
+    setInterval(calcDirection, 33);
     drawBoard();
-    if(playStart){
+    if (playStart) {
         /*document.addEventListener("wheel", (event) => {
             event.preventDefault();
             scale += event.deltaY * -0.0009;
@@ -49,14 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener("mousemove", (event) => {
         vecX = event.clientX - 800;
         vecY = event.clientY - 1000;
-
-        calcVecX = (vecX / ((Math.abs(vecX) + Math.abs(vecY))));
-        calcVecY = (vecY / ((Math.abs(vecX) + Math.abs(vecY))));
-
-        console.log("x:" + (calcVecX));
-        console.log("y:" + (calcVecY));
-        console.log(Math.abs(calcVecX) + Math.abs(calcVecY));
-
     });
 });
 
@@ -88,7 +80,7 @@ function play() {
     context.closePath();
 }
 
-//Funktion für das Zeichnen des Grids auf dem Spielfeld
+//Methode für das Zeichnen des Grids auf dem Spielfeld
 function drawBoard(){
     for (let x = 0; x <= playingField.width; x += 40) {
         context.moveTo(0.5 + x + 10, 10);
@@ -102,4 +94,13 @@ function drawBoard(){
     context.strokeStyle = "gray";
     context.lineWidth = 0.3;
     context.stroke();
+}
+
+//Methode für das Berechnen des Vektors von 1 bis -1 für die X Achse und die Y Achse
+function calcDirection() {
+    calcVecX = (vecX / ((Math.abs(vecX) + Math.abs(vecY))));
+    calcVecY = (vecY / ((Math.abs(vecX) + Math.abs(vecY))));
+    console.log("x:" + (calcVecX));
+    console.log("y:" + (calcVecY));
+    console.log(Math.abs(calcVecX) + Math.abs(calcVecY));
 }
