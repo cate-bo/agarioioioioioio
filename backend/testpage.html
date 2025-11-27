@@ -8,13 +8,15 @@
 <button id="btn">test</button>
 <script type="module">
     import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
-
+    import {Circle, Position} from "../www-root/helper.js";
     let counter = 0;
     document.addEventListener('DOMContentLoaded', () =>
     {
-
+        let thing = new Circle(new Position(1,2),5, 3);
 
         const socket = io();
+
+        socket.emit('increment', thing);
 
         socket.on('increment', (number)=>{
             console.log(number);
@@ -22,7 +24,7 @@
 
 
         document.getElementById('btn').addEventListener('click', (e)=>{
-            socket.emit('increment', counter);
+            socket.emit('increment', {thing: 'number',number: counter});
             counter++;
         });
     });
