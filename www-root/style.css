@@ -11,6 +11,7 @@
 }
 body{
     margin: 0;
+    /*overflow: hidden;*/
 }
 #menu{
     margin:auto;
@@ -24,11 +25,13 @@ body{
     display: block;
     margin: 0;
 }
-.circle{
+#circle{
     position: fixed;
     width: 50px;
     height: 50px;
     border: 1px solid #ffffff;
     border-radius: 100%;
     pointer-events: none;
+    z-index: 99;
+    visibility: hidden;
 }
