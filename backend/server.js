@@ -3,8 +3,8 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const path = require('path');
+const game = require('./game.mjs');
 
-console.log(path.join(__dirname, '..', 'www-root'));
 app.use('/', express.static(path.join(__dirname, '..', 'www-root')));
 
 io.on('connection', (socket) =>{
