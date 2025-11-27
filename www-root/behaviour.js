@@ -12,6 +12,8 @@ let offsetY;
 let offsetX;
 let scale = 1;
 let screen;
+let playStart = false;
+let i = 0;
 document.addEventListener("DOMContentLoaded", function() {
     playingField = document.getElementById("playArea");
     playingField.width = 10000;
@@ -29,19 +31,41 @@ document.addEventListener("DOMContentLoaded", function() {
     startGameBtn.addEventListener("click", function() {
         startGame();
     });
-    drawBoard();
 
+    drawBoard();
+    if(playStart){
+        document.addEventListener("wheel", (event) => {
+            event.preventDefault();
+            scale += event.deltaY * -0.0009;
+            scale = Math.min(Math.max(0.85, scale), 1.6);
+            screen.style.transform = `zoom(${scale})`;
+            console.log("scale", scale);
+            console.log(window.scrollX);
+            console.log(window.scrollY);
+        }, {passive: false});
+        play();
+    }
+        document.addEventListener("mousemove", (event) => {
+            console.log(event.clientX);
+            console.log(event.clientY);
+        })
 });
 
 function startGame(){
     menuPlatform = document.getElementById("screen");
     menuPlatform.style.display = "none";
+
+    //Koordinaten vom Server für den Spawn hier rein
     window.scrollTo(800, 1000);
+    playStart = true;
+    console.log(playStart);
+
     document.addEventListener("wheel", (event) => {
         event.preventDefault();
         scale += event.deltaY * -0.0009;
         scale = Math.min(Math.max(0.85, scale), 1.6);
         screen.style.transform = `scale(${scale})`;
+        window.scrollTo(800, 1000);
         console.log("scale", scale);
     }, {passive: false});
     play();
@@ -49,9 +73,10 @@ function startGame(){
 
 function play() {
     context.beginPath();
-    context.arc(800, 1000,40,0,2*Math.PI);
+    context.arc(800+window.innerWidth/2, 1000+window.innerHeight/2,80,0,2*Math.PI);
     context.fillStyle = "red";
     context.fill();
+    context.closePath();
 }
 
 //Funktion für das Zeichnen des Grids auf dem Spielfeld
