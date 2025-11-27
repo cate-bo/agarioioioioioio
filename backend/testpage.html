@@ -6,24 +6,26 @@
 </head>
 <body>
 <button id="btn">test</button>
-<script>
+<script type="module">
+    import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
+
     let counter = 0;
     document.addEventListener('DOMContentLoaded', () =>
     {
-        const websocket = new WebSocket('http://localhost:8080');
-        websocket.addEventListener("open", () =>
-        {
-            console.log("connected");
 
-        });
-        websocket.addEventListener('message', function message(content) {
-            console.log(content.data);
+
+        const socket = io();
+
+        socket.on('increment', (number)=>{
+            console.log(number);
         })
+
+
         document.getElementById('btn').addEventListener('click', (e)=>{
-            websocket.send(JSON.stringify(counter));
+            socket.emit('increment', counter);
             counter++;
-        })
-    })
+        });
+    });
 
 </script>
 </body>
