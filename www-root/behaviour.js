@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+
 function startGame(){
     menuPlatform = document.getElementById("screen");
     menuPlatform.style.display = "none";
@@ -60,17 +61,9 @@ function startGame(){
     window.scrollTo(800 - window.innerWidth/2, 1000 - window.innerHeight/2);
     playStart = true;
     console.log(playStart);
-
-    /*document.addEventListener("wheel", (event) => {
-        event.preventDefault();
-        scale += event.deltaY * -0.0009;
-        scale = Math.min(Math.max(0.85, scale), 1.6);
-        screen.style.transform = `scale(${scale})`;
-        window.scrollTo(800 - window.innerWidth/2, 1000 - window.innerHeight/2);
-        console.log("scale", scale);
-    }, {passive: false});*/
     play();
 }
+
 
 function play() {
     context.beginPath();
