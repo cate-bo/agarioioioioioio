@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
+//Methode für den Start des Spiels, wo der Spieler spawnt und das ausblenden des Menüs
 function startGame(){
     menuPlatform = document.getElementById("screen");
     menuPlatform.style.display = "none";
@@ -64,7 +64,7 @@ function startGame(){
     play();
 }
 
-
+//Methode für die Bewegung des Kreises auf dem Canvas
 function play() {
     context.beginPath();
     context.arc(800, 1000,80,0,2*Math.PI);
