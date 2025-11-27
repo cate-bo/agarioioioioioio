@@ -1,3 +1,5 @@
+const Player = require('./utility.mjs');
+
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
@@ -7,13 +9,18 @@ const game = require('./game.mjs');
 
 app.use('/', express.static(path.join(__dirname, '..', 'www-root')));
 
+let players = new Array();
+
 io.on('connection', (socket) =>{
     console.log('connected');
     socket.on('increment', (number)=>{
         console.log(number);
         socket.emit('increment', number);
-    })
-})
+    });
+    socket.on('play', ()=>{
+        console.log('amogus');
+    });
+});
 
 
 

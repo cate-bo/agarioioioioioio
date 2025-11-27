@@ -3,12 +3,13 @@ class Circle
     id;
     position;
     size;
-
-    constructor(position, size, id)
+    direction;
+    constructor(position, size, id, direction)
     {
         this.position = position;
         this.size = size;
         this.id = id;
+        this.direction = direction;
     }
 }
 
