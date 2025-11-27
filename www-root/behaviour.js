@@ -15,6 +15,8 @@ let screen;
 let playStart = false;
 let vecX, vecY;
 let calcVecX, calcVecY;
+let diffX, diffY;
+let score;
 document.addEventListener("DOMContentLoaded", function() {
     playingField = document.getElementById("playArea");
     playingField.width = 10000;
@@ -64,7 +66,7 @@ function startGame(){
     play();
 }
 
-//Methode für die Bewegung des Kreises auf dem Canvas
+//Methode für die Bewegung des Canvas
 function play() {
     context.beginPath();
     context.arc(800, 1000,80,0,2*Math.PI);
