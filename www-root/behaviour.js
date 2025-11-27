@@ -1,7 +1,4 @@
-let player = {
-    mouseDirectionX: 0,
-    mouseDirectionY: 0
-};
+
 let startGameBtn;
 let menuPlatform;
 let inputField;
@@ -17,7 +14,7 @@ let vecX, vecY;
 let calcVecX, calcVecY;
 let diffX, diffY;
 let score;
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     playingField = document.getElementById("playArea");
     playingField.width = 10000;
     playingField.height = 10000;
@@ -55,12 +52,12 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //Methode für den Start des Spiels, wo der Spieler spawnt und das ausblenden des Menüs
-function startGame(){
+function startGame() {
     menuPlatform = document.getElementById("screen");
     menuPlatform.style.display = "none";
 
     //Koordinaten vom Server für den Spawn hier rein
-    window.scrollTo(800 - window.innerWidth/2, 1000 - window.innerHeight/2);
+    window.scrollTo(800 - window.innerWidth / 2, 1000 - window.innerHeight / 2);
     playStart = true;
     console.log(playStart);
     play();
@@ -69,14 +66,14 @@ function startGame(){
 //Methode für die Bewegung des Canvas
 function play() {
     context.beginPath();
-    context.arc(800, 1000,80,0,2*Math.PI);
+    context.arc(800, 1000, 80, 0, 2 * Math.PI);
     context.fillStyle = "red";
     context.fill();
     context.closePath();
 }
 
 //Methode für das Zeichnen des Grids auf dem Spielfeld
-function drawBoard(){
+function drawBoard() {
     for (let x = 0; x <= playingField.width; x += 40) {
         context.moveTo(0.5 + x + 10, 10);
         context.lineTo(0.5 + x + 10, playingField.height + 10);
