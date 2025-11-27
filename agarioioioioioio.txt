@@ -1,0 +1,25 @@
+agarioioioioioio
+
+server:
+-node 
+-update loop (30hz)
+-position
+-spawns 
+
+client:
+-menu (name, leaderboard )
+-update loop (30hz)
+-input (mouse pos, space)
+-rendering
+
+
+server client communication:
+-websocket
+
+
+messages ( cts = client to server, stc = server to client):
+'play'
+-cts: empty
+-stc: circle object of player
+'died'
+-stc: empty
