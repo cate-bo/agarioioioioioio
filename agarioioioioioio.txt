@@ -23,3 +23,7 @@ messages ( cts = client to server, stc = server to client):
 -stc: circle object of player
 'died'
 -stc: empty
+'game_update'
+-stc: arrays of spawned dots, eaten dots, all circles
+'direction'
+-cts: direction
