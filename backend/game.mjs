@@ -4,6 +4,7 @@ import Players from './utility.mjs';
 const base_speed = 10;
 const slow_down_factor = 0.001;
 const point_spawnrate = 10;
+const max_points = 10_000;
 const min_spawn_distance_from_center = 3_000;
 const max_spawn_distance_from_center = 5_500;
 const start_size = 10;
@@ -66,6 +67,6 @@ class Gamestate
     }
 }
 
+const Game = new Gamestate();
 
-
-export default Gamestate;
+export default Game;
