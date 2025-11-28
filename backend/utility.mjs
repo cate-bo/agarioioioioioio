@@ -10,5 +10,6 @@ class Player
     }
 }
 
+const Players = new Array()
 
-export default Player;
+export default Players;

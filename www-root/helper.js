@@ -1,3 +1,5 @@
+const play_area_size = 10_000;
+
 class Circle
 {
     id;
@@ -53,5 +55,6 @@ module.exports = {
     Position,
     Point,
     Circle,
-    Direction
+    Direction,
+    play_area_size
 }
