@@ -1,4 +1,4 @@
-const Player = require('./utility.mjs');
+const Players = require('./utility.mjs');
 
 const express = require('express');
 const app = express();
@@ -9,7 +9,6 @@ const game = require('./game.mjs');
 
 app.use('/', express.static(path.join(__dirname, '..', 'www-root')));
 
-let players = new Array();
 
 io.on('connection', (socket) =>{
     console.log('connected');
@@ -35,7 +34,9 @@ init();
 
 function init()
 {
-
+    //console.log(Players);
+    //Players.push('amogus1');
+    console.log(game.default);
 
     //setInterval(game_update, 1000);
 }
