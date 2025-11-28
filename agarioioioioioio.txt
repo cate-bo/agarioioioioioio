@@ -19,11 +19,11 @@ server client communication:
 
 messages ( cts = client to server, stc = server to client):
 'play'
--cts: empty
--stc: circle object of player
+-cts: name of player (send to start playing but don't initialise game yet)
+-stc: circle object of player (client sees game after receiving this)
 'died'
 -stc: empty
 'game_update'
 -stc: arrays of spawned dots, eaten dots, all circles
 'direction'
--cts: direction
+-cts: current direction
